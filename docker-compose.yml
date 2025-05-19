@@ -1,0 +1,13 @@
+services:
+  app:
+    build:
+      context: .
+      args:
+        - DEV=true
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app:/app
+    # il command verrà ignorato durante `docker-compose run --rm app <cmd>`
+    command: >
+      sh -c "python manage.py runserver 0.0.0.0:8000"
